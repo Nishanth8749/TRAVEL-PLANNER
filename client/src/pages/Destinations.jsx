@@ -50,10 +50,18 @@ const Destinations = () => {
       setSearchParams(params);
       
       const response = await destinationAPI.getAll(params);
-      setDestinations(response.data);
+
+console.log("FULL RESPONSE:", response);
+console.log("DATA:", response.data);
+console.log("IS ARRAY:", Array.isArray(response.data));
+console.log("LENGTH:", response.data?.length);
+
+setDestinations(response.data);
     } catch (error) {
-      console.error('Failed to fetch destinations:', error);
-    } finally {
+  console.log("ERROR", error);
+  console.log("RESPONSE", error.response);
+  console.log("DATA", error.response?.data);
+} finally {
       setLoading(false);
     }
   };
