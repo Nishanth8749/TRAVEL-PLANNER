@@ -22,6 +22,17 @@ const adminRoutes = require('./routes/admin');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://white-field-07b35d800.7.azurestaticapps.net"
+  ],
+  credentials: true
+}));
+
+app.options("*", cors());
 // Security middleware
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' }
